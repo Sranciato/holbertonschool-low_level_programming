@@ -1,4 +1,6 @@
-/* puts command */
+/**
+ * puts command
+ */
 #include <stdio.h>
 int main(void)
 {
