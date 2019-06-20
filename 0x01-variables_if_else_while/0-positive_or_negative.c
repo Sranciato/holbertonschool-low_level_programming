@@ -8,13 +8,13 @@
 int main(void)
 {
 
-	int a = 0;
+	int n = 0;
 
-	if (a > 0)
-		printf("%d is positive\n", a);
-	if else(a = 0)
-		printf("%d is zero\n", a);
+	if (n > 0)
+		printf("%d is positive\n", n);
+	if else(n = 0)
+		printf("%d is zero\n", n);
 	else
-		printf("%d is negative\n", a);
+		printf("%d is negative\n", n);
 	return (0);
 }
