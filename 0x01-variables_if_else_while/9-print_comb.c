@@ -7,21 +7,21 @@
  */
 int main(void)
 {
+	int n = 0;
 	int i = 48;
+	int a[] = {44, 32};
 
 	while (i <= 57)
 	{
-		if (i <= 56)
+		putchar(i);
+		while (n < 2 && i != 57)
 		{
-			putchar(i);
-			putchar(',');
-			putchar(' ');
+			putchar(a[n]);
+			n++;
 		}
-		else
-		{
-			putchar(i);
-		}
+		n = 0;
 		i++;
 	}
+	putchar('\n');
 	return (0);
 }
