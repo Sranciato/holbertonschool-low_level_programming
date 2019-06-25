@@ -2,7 +2,7 @@
 
 /**
  * times_table - writes the character c to stdout
- * @n: The character to print
+ * @: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
@@ -36,8 +36,8 @@ void times_table(void)
 			{
 					_putchar(',');
 					_putchar(' ');
-					_putchar((n/10) + '0');
-					_putchar((n%10) + '0');
+					_putchar((n / 10) + '0');
+					_putchar((n % 10) + '0');
 			}
 		}
 		_putchar('\n');
