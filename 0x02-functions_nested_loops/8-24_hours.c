@@ -2,7 +2,7 @@
 
 /**
  * jack_bauer - writes the character c to stdout
- * @n: The character to print
+ * @: The character to print
  *
  * Return: On success 1.
  * On error, -1 is returned, and errno is set appropriately.
@@ -16,7 +16,7 @@ void jack_bauer(void)
 
 	for (a = 0; a < 3; a++)
 	{
-		for (b = 0;b < 4; b++)
+		for (b = 0; b < 4; b++)
 		{
 			for (c = 0; c < 6; c++)
 			{
