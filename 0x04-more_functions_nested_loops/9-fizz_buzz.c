@@ -26,7 +26,7 @@ int main(void)
 		{
 			printf("FizzBuzz ");
 		}
-		else if (i < 100 && (!(i % 3 == 0) || !(i % 5 ==0)))
+		else if (i < 100 && (!(i % 3 == 0) || !(i % 5 == 0)))
 		{
 			printf("%d ", i);
 		}
