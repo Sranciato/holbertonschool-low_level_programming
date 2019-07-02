@@ -17,7 +17,7 @@ void puts_half(char *str)
 		{
 			if (i >= size / 2)
 			{
-				_putchar(s[i]);
+				_putchar(str[i]);
 			}
 		}
 		_putchar('\n');
@@ -26,10 +26,11 @@ void puts_half(char *str)
 	{
 		for (i = 0; i < size; i++)
 		{
-			if (i >= (size - 1) / 2)
+			if (i > (size - 1) / 2)
 			{
-				_putchar(s[i]);
+				_putchar(str[i]);
 			}
 		}
+		_putchar('\n');
 	}
 }
