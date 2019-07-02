@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * swap_int - check the code for Holberton School students.
+ * puts2 - check the code for Holberton School students.
  * @str: variable name.
  */
 void puts2(char *str)
