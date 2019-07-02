@@ -1,20 +1,18 @@
 #include "holberton.h"
 /**
- * reset_to_98 - check the code for Holberton School students.
- * @n: variable name.
- * Return: Always 0.
+ * print_rev - check the code for Holberton School students.
+ * @s: variable name.
  */
 void print_rev(char *s)
 {
-	int i;
+	int length;
 
-	for (i = 0; *s != '\0'; i++)
+	for (length = 0; s[length] != '\0'; length++)
 	{
-		s++;
 	}
-	for (; *s >= 0; s--)
+	for (; length >= 0; length--)
 	{
-		_putchar(*s);
+		_putchar(s[length]);
 	}
 	_putchar('\n');
 }
