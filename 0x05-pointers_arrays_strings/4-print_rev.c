@@ -2,6 +2,7 @@
 /**
  * print_rev - check the code for Holberton School students.
  * @s: variable name.
+ * Returns: void.
  */
 void print_rev(char *s)
 {
@@ -12,7 +13,7 @@ void print_rev(char *s)
 	}
 	for (; length >= 0; length--)
 	{
-		_putchar(s[length]);
+		_putchar(*(s + length));
 	}
 	_putchar('\n');
 }
