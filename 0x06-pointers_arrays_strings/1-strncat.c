@@ -1,11 +1,12 @@
 #include "holberton.h"
 /**
- * _strcat - check the code for Holberton School students.
+ * _strncat - check the code for Holberton School students.
  * @dest: variable name.
  * @src: variable 2.
+ * @n: int.
  * Return: char.
  */
-char *_strcat(char *dest, char *src)
+char *_strncat(char *dest, char *src, int n)
 {
 	int i, j;
 	char *dlen = dest;
@@ -13,7 +14,7 @@ char *_strcat(char *dest, char *src)
 
 	for (i = 0; *(dlen + i) != '\0'; i++)
 		;
-	for (j = 0; *(slen + j) != '\0'; j++)
+	for (j = 0; *(slen + j) != '\0' && n--; j++)
 	{
 		*(dlen + (i + j)) = *(slen + j);
 	}
