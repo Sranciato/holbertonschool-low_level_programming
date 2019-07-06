@@ -17,6 +17,10 @@ char *cap_string(char *c)
 		{
 			for (x = 0; s[x] != '\0'; x++)
 			{
+				if (c[j - 1] == '\t')
+				{
+					c[j - 1] = ' ';
+				}
 				if (c[j - 1] == s[x])
 				{
 					c[j] = c[j] - 32;
