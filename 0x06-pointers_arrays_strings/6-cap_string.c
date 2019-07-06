@@ -20,7 +20,10 @@ char *cap_string(char *c)
 					c[i] = c[i] - 32;
 				}
 			}
-			x = 0;
+			if (c[0] == c[i])
+			{
+				c[i] = c[i] - 32;
+			}
 		}
 	}
 	return (c);
