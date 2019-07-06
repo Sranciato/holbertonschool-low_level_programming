@@ -1,6 +1,6 @@
 #include "holberton.h"
 /**
- * _strncat - check the code for Holberton School students.
+ * _strncpy - check the code for Holberton School students.
  * @dest: variable name.
  * @src: variable 2.
  * @n: int.
@@ -8,20 +8,15 @@
  */
 char *_strncpy(char *dest, char *src, int n)
 {
-	int i, j;
-	char *d = dest;
-	char *s = src;
+	int i;
 
-	for (i = 0; *(s + i) != '\0'; i++)
-		;
-	for (j = 0; j <= i && j < n; j++)
+	for (i = 0; i < n && src[i] != '\0'; i++)
 	{
-		*(d + j) = *(src + j);
+		dest[i] = src[i];
 	}
-	for (; i < n; i++)
+	for ( ; i < n; i++)
 	{
 		dest[i] = '\0';
 	}
-
-	return (d);
+	return (dest);
 }
