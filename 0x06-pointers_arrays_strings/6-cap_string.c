@@ -7,7 +7,7 @@
 char *cap_string(char *c)
 {
 	int i, j, x;
-	char *s = " ,\t\n,;.!?\"(0{}";
+	char *s = " ,\t\n,;.!?\"(){}";
 
 	for (i = 0; c[i] != '\0'; i++)
 		;
@@ -17,10 +17,6 @@ char *cap_string(char *c)
 		{
 			for (x = 0; s[x] != '\0'; x++)
 			{
-				if (c[j - 1] == '\t')
-				{
-					c[j - 1] = ' ';
-				}
 				if (c[j - 1] == s[x])
 				{
 					c[j] = c[j] - 32;
@@ -29,6 +25,5 @@ char *cap_string(char *c)
 			x = 0;
 		}
 	}
-	c[j] = '\0';
 	return (c);
 }
