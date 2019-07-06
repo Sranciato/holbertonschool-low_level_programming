@@ -11,7 +11,7 @@ char *cap_string(char *c)
 
 	for (i = 0; c[i] != '\0'; i++)
 		;
-	for (j = 0; j < i; j++)
+	for (j = 0; j <= i; j++)
 	{
 		if (c[j] >= 'a' && c[j] <= 'z')
 		{
@@ -25,6 +25,5 @@ char *cap_string(char *c)
 			x = 0;
 		}
 	}
-	c[j] = '\0';
 	return (c);
 }
