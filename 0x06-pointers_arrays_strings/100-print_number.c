@@ -30,7 +30,10 @@ void print_number(int n)
 		{
 			if (n / y != 0)
 			{
-				_putchar(((-n / y) % 10) + '0');
+				if (n < -2147483647)
+					_putchar((((-n / y) % 10) * -1) + '0');
+				else
+					_putchar(((-n / y) % 10) + '0');
 			}
 		}
 	}
