@@ -34,7 +34,6 @@ int counter(char *s, int i, int p)
 	}
 	else if (s[i - 1] == s[p] && p <= i)
 	{
-		printf("hey");
 		return (counter(s, --i, ++p));
 	}
 	else
