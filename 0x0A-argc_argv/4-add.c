@@ -20,13 +20,15 @@ int main(int argc, char *argv[])
 			val = strtol(argv[i], &end, 10);
 			if (!end[0] && val >= 0)
 				sum += atoi(argv[i]);
+			else if (!end[0] && val < 0)
+				continue;
 			else
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-		printf("%d\n", sum);
+		printf("%i\n", sum);
 		return (0);
 	}
 	printf("0\n");
