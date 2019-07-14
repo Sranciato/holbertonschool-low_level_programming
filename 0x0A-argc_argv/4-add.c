@@ -9,16 +9,18 @@
  */
 int main(int argc, char *argv[])
 {
-	int i;
+	int i, val;
 	int sum = 0;
+	char *end;
 
 	if (argc > 1)
 	{
 		for (i = 1; i < argc; i++)
 		{
-			if (atoi(argv[i]) > 0)
+			val = strtol(argv[i], &end, 10);
+			if (!end[0] && val >= 0)
 				sum += atoi(argv[i]);
-			else if (atoi(argv[i]) == 0)
+			else
 			{
 				printf("Error\n");
 				return (1);
