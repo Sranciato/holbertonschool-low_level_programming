@@ -1,6 +1,7 @@
 #include "holberton.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <limits.h>
 /**
  * main - check the code for Holberton School students.
  * @argc: variable name.
@@ -19,17 +20,25 @@ int main(int argc, char *argv[])
 		{
 			val = strtol(argv[i], &end, 10);
 			if (!end[0] && val >= 0)
-				sum += atoi(argv[i]);
-			else if (!end[0] && val < 0)
-				continue;
+			{
+				sum += val;
+			}
 			else
 			{
 				printf("Error\n");
 				return (1);
 			}
 		}
-		printf("%i\n", sum);
-		return (0);
+		if (sum <= INT_MAX)
+		{
+			printf("%i\n", sum);
+			return (0);
+		}
+		else
+		{
+			printf("Error\n");
+			return (1);
+		}
 	}
 	printf("0\n");
 	return (0);
