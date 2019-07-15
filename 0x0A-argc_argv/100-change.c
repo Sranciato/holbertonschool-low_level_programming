@@ -9,15 +9,21 @@
  */
 int main(int argc, char *argv[])
 {
-	int count;
-	int cents = atoi(argv[1]);
+	int count, x;
+	int cents;
 	int c[5] = {25, 10, 5, 2, 1};
-	int x;
 
-	if (argc == 2 && cents >= 0)
+	if (argc != 2)
+	{
+		printf("Error\n");
+		return (1);
+	}
+	else if (argc == 2)
+		cents = atoi(argv[1]);
+
+	if (cents > 0)
 	{
 		count = 0;
-		cents = atoi(argv[1]);
 		for (; cents > 0; count++)
 		{
 			for (x = 0; x < 5; x++)
@@ -32,11 +38,7 @@ int main(int argc, char *argv[])
 		printf("%i\n", count);
 		return (0);
 	}
-	else if (cents < 0)
-	{
-		printf("0\n");
-		return (0);
-	}
-	printf("Error\n");
-	return (1);
+	else if (cents <= 0)
+	printf("0\n");
+	return (0);
 }
