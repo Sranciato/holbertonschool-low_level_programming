@@ -1,11 +1,10 @@
 #include "holberton.h"
 #include <stdlib.h>
 /**
- * _memset - check the code for Holberton School students.
- * @s: variable name.
- * @b: variable 2.
- * @n: int.
- * Return: char.
+ * create_array - check the code for Holberton School students.
+ * @size: variable name.
+ * @c: variable 2.
+ * Return: pointer.
  */
 char *create_array(unsigned int size, char c)
 {
