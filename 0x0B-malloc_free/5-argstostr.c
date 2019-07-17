@@ -25,29 +25,26 @@ int len(char *s)
  */
 char *argstostr(int ac, char **av)
 {
-	int i, temp = 0, x, length;
+	int i, x, length = 0, l, c;
 	char *p;
 
 	if (ac == 0 || av == NULL)
 		return (NULL);
-	p = (char *)malloc(sizeof(char *) * ac + 1);
+
+	for (l = 0; l < ac; l++)
+		length += len(av[l]);
+
+	p = malloc(sizeof(char) * (length + ac + 1));
 
 	if (p == NULL)
 		return (NULL);
 
-	for (i = 0; i < ac + 1; i++)
+	for (i = 0; i < ac; i++)
 	{
-		length = len(av[i]);
-
-		p[i] = malloc(sizeof(char) * (length + 1));
-
-		if (p == NULL)
-			return (NULL);
-
-		for (x = 0; x <= length; x++)
-			p[x + temp] = av[i][x];
-
-		temp += x;
+		for (x = 0; av[i][x] != '\0'; x++, c++)
+			p[c] = av[i][x];
+		p[c] = '\n';
+		c++;
 	}
 	return (p);
 
