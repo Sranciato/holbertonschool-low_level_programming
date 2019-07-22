@@ -25,6 +25,7 @@ char *_strdup(char *str)
 			p[i] = str[i];
 		return (p);
 	}
+	free(p);
 	return (NULL);
 }
 /**
@@ -43,12 +44,8 @@ dog_t *new_dog(char *name, float age, char *owner)
 		free(p);
 		return (NULL);
 	}
-	if (p)
-	{
-		p->name = _strdup(name);
-		p->age = age;
-		p->owner = _strdup(owner);
-		return (p);
-	}
-	return (NULL);
+	p->name = _strdup(name);
+	p->age = age;
+	p->owner = _strdup(owner);
+	return (p);
 }
