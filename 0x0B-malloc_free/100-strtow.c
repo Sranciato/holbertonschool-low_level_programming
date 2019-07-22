@@ -55,7 +55,6 @@ char **strtow(char *str)
 
 	if (!str || *str == '\0')
 		return (NULL);
-
 	words = nstrings(str);
 	p = malloc((words + 1) * sizeof(char *));
 	if (p == NULL)
@@ -65,6 +64,11 @@ char **strtow(char *str)
 		p[i] = malloc(mallet(str) + 1);
 		if (p[i] == NULL)
 		{
+			while ((int)i >= 0)
+			{
+				i--;
+				free(p[i]);
+			}
 			free(p);
 			return (NULL);
 		}
@@ -83,5 +87,6 @@ char **strtow(char *str)
 			}
 		}
 	}
+	p[i + 1] = NULL;
 	return (p);
 }
