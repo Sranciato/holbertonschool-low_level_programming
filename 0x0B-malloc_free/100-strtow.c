@@ -63,6 +63,16 @@ char **strtow(char *str)
 	for (i = 0; i < words; i++)
 	{
 		p[i] = malloc(mallet(str) + 1);
+		if (p[i] == NULL)
+		{
+			while (i >= 0)
+			{
+				free(p[i]);
+				i--;
+			}
+			free(p);
+			return (NULL);
+		}
 		for (x = 0; *str != '\0'; str++)
 		{
 			if (*str != 32)
