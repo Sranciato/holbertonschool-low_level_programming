@@ -26,38 +26,35 @@ void print_all(const char * const format, ...)
 
 	va_start(valist, format);
 
-	if (format)
+	while (format[i] != '\0')
 	{
-		while (format[i] != '\0')
+		switch (format[i])
 		{
-			switch (format[i])
-			{
-			case 'c':
-				checker(check, i);
-				printf("%c", va_arg(valist, int));
-				check = 1;
-				break;
-			case 'i':
-				checker(check, i);
-				printf("%i", va_arg(valist, int));
-				check = 1;
-				break;
-			case 'f':
-				checker(check, i);
-				printf("%f", va_arg(valist, double));
-				check = 1;
-				break;
-			case 's':
-				checker(check, i);
-				string = va_arg(valist, char *);
-				if (string == NULL)
-					string = "(nil)";
-				printf("%s", string);
-				check = 1;
-				break;
-			}
-			i++;
+		case 'c':
+			checker(check, i);
+			printf("%c", va_arg(valist, int));
+			check = 1;
+			break;
+		case 'i':
+			checker(check, i);
+			printf("%i", va_arg(valist, int));
+			check = 1;
+			break;
+		case 'f':
+			checker(check, i);
+			printf("%f", va_arg(valist, double));
+			check = 1;
+			break;
+		case 's':
+			checker(check, i);
+			string = va_arg(valist, char *);
+			if (string == NULL)
+				string = "(nil)";
+			printf("%s", string);
+			check = 1;
+			break;
 		}
+		i++;
 	}
 	printf("\n");
 	va_end(valist);
