@@ -7,16 +7,16 @@
 void print_numbers(const char *separator, const unsigned int n, ...)
 {
 	va_list valist;
-	unsigned int i;
+	unsigned int i, arg;
 
 	va_start(valist, n);
 
-	for (i = 0; i < n && n > 0; i++)
+	for (i = 0; i < n; i++)
 	{
-		if (i > 0)
-			printf("%s%i", separator, va_arg(valist, unsigned int));
-		else if (i == 0 || separator == NULL)
-			printf("%i", va_arg(valist, unsigned int));
+		arg = va_arg(valist, unsigned int);
+		printf("%i", arg);
+		if (i < n - 1 && separator)
+			printf("%s", separator);
 	}
 	printf("\n");
 	va_end(valist);
