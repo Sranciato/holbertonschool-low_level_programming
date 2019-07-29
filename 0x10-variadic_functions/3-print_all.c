@@ -9,9 +9,10 @@ void checker(int a, int i);
  */
 void checker(int a, int i)
 {
-	if (a == 1 && i > 0)
+	while (a == 1 && i > 0)
 	{
 		printf(", ");
+		break;
 	}
 }
 /**
