@@ -24,38 +24,41 @@ void print_all(const char * const format, ...)
 	char *string;
 	int check = 0, i = 0;
 
-	va_start(valist, format);
-
-	while (format[i] != '\0' && format)
+	if (format)
 	{
-		switch (format[i])
+		va_start(valist, format);
+
+		while (format[i] != '\0')
 		{
-		case 'c':
-			checker(check, i);
-			printf("%c", va_arg(valist, int));
-			check = 1;
-			break;
-		case 'i':
-			checker(check, i);
-			printf("%i", va_arg(valist, int));
-			check = 1;
-			break;
-		case 'f':
-			checker(check, i);
-			printf("%f", va_arg(valist, double));
-			check = 1;
-			break;
-		case 's':
-			checker(check, i);
-			string = va_arg(valist, char *);
-			if (string == NULL)
-				string = "(nil)";
-			printf("%s", string);
-			check = 1;
-			break;
+			switch (format[i])
+			{
+			case 'c':
+				checker(check, i);
+				printf("%c", va_arg(valist, int));
+				check = 1;
+				break;
+			case 'i':
+				checker(check, i);
+				printf("%i", va_arg(valist, int));
+				check = 1;
+				break;
+			case 'f':
+				checker(check, i);
+				printf("%f", va_arg(valist, double));
+				check = 1;
+				break;
+			case 's':
+				checker(check, i);
+				string = va_arg(valist, char *);
+				if (string == NULL)
+					string = "(nil)";
+				printf("%s", string);
+				check = 1;
+				break;
+			}
+			i++;
 		}
-		i++;
+		printf("\n");
+		va_end(valist);
 	}
-	printf("\n");
-	va_end(valist);
 }
