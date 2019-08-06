@@ -13,10 +13,7 @@ int sum_listint(listint_t *head)
 		return (0);
 	while (search)
 	{
-		if (search->n > -1)
-			sum += search->n;
-		else
-			sum += 0;
+		sum += search->n;
 		search = search->next;
 	}
 	return (sum);
