@@ -11,7 +11,6 @@ void free_listint(listint_t *head)
 	{
 		tmp = head;
 		head = tmp->next;
-		printf("%d\n", tmp->n);
 		free(tmp);
 	}
 	free(head);
