@@ -20,10 +20,18 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		return (0);
 
 	buf = malloc(letters);
-	bytes = read(fd, buf, letters);
-	check = write(1, buf, letters);
-	if (check < 0)
+	if (buf == NULL)
+	{
+		close(fd);
 		return (0);
+	}
+	bytes = read(fd, buf, letters);
+	check = write(STDOUT_FILENO, buf, letters);
+	if (check < 0)
+	{
+		free(buf);
+		return (0);
+	}
 
 	free(buf);
 
