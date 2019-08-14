@@ -18,6 +18,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	file_read(argv[1], argv[2]);
+
 	return (0);
 }
 /**
@@ -28,73 +29,38 @@ int main(int argc, char *argv[])
  */
 size_t file_read(char *filefrom, char *fileto)
 {
-	size_t bytes;
-	int fd;
-	char *buf;
+	ssize_t bytes, bytes2;
+	int fd1, fd2;
+	char buf[1024];
 
-	fd = open(filefrom, O_RDONLY);
-	if (fd == -1)
+	fd1 = open(filefrom, O_RDONLY);
+	if (fd1 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filefrom);
+		exit(98);
 	}
-	buf = malloc(1024);
-	if (buf == NULL)
+	fd2 = open(fileto, O_CREAT | O_TRUNC | O_WRONLY, 0664);
+	if (fd2 == -1)
 	{
-		close(fd);
-		return (0);
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", fileto);
+		exit(98);
 	}
-	bytes = read(fd, buf, 1024);
-	if (bytes < 1)
+	while (bytes)
 	{
-		free(buf);
-		return (0);
+		bytes = read(fd1, buf, 1024);
+		if (bytes == -1)
+		{
+			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filefrom);
+			exit(98);
+		}
+		bytes2 = write(fd2, buf, bytes);
+		if (bytes2 == -1 || bytes != bytes2)
+			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", fileto), exit(99);
 	}
-	file_create(fileto, buf);
+	if (close(fd1) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd1), exit(100);
+	if (close(fd2) == -1)
+		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd2), exit(100);
 
-	free(buf);
-
-	close(fd);
-
-	return (1);
-}
-/**
- * file_create - write to new file.
- * @fileto: new file.
- * @text_content: text to be copied.
- * Return: size_t.
- */
-size_t file_create(char *fileto, char *text_content)
-{
-	int fd;
-	size_t check = 0;
-
-	if (fileto == NULL)
-		return (-1);
-
-	if (text_content == NULL)
-	{
-		fd = open(fileto, O_RDWR | O_TRUNC | O_CREAT, 0664);
-		if (fd == -1)
-			return (0);
-		return (1);
-	}
-
-	fd = open(fileto, O_RDWR | O_TRUNC | O_CREAT, 0664);
-	if (fd == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
-		exit(100);
-	}
-	check = write(fd, text_content, 1024);
-	if (check < 1)
-	{
-		close(fd);
-		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fileto);
-		exit(99);
-	}
-
-	close(fd);
-
-	return (1);
+	return (0);
 }
