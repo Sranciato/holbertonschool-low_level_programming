@@ -29,7 +29,7 @@ int main(int argc, char *argv[])
  */
 size_t file_read(char *filefrom, char *fileto)
 {
-	ssize_t bytes, bytes2, closecheck, closecheck2;
+	ssize_t bytes, bytes2;
 	int fd1, fd2;
 	char buf[1024];
 
@@ -59,11 +59,9 @@ size_t file_read(char *filefrom, char *fileto)
 		if (bytes2 == -1 || bytes != bytes2)
 			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", fileto), exit(99);
 	}
-	closecheck = close(fd1);
-	if (closecheck == -1)
+	if (close(fd1) == -1)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1), exit(100);
-	closecheck2 = close(fd2);
-	if (closecheck2 == -1)
+	if (close(fd2) == -1)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2), exit(100);
 
 	return (0);
