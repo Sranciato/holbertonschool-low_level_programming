@@ -42,8 +42,8 @@ size_t file_read(char *filefrom, char *fileto)
 	fd2 = open(fileto, O_CREAT | O_TRUNC | O_WRONLY, 0664);
 	if (fd2 == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", fileto);
-		exit(98);
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", fileto), exit(99);
+		exit(99);
 	}
 	while (bytes)
 	{
