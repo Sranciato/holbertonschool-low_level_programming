@@ -7,6 +7,8 @@
  */
 int main(int argc, char *argv[])
 {
+	int check;
+
 	if (argc != 3)
 	{
 		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
@@ -17,7 +19,14 @@ int main(int argc, char *argv[])
 		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
 		exit(98);
 	}
-	file_read(argv[1], argv[2]);
+	check = file_read(argv[1], argv[2]);
+	if (check == 1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", argv[1]);
+		exit(98);
+	}
+	else if (check == 2)
+		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]), exit(99);
 
 	return (0);
 }
@@ -35,29 +44,20 @@ int file_read(char *filefrom, char *fileto)
 
 	fd1 = open(filefrom, O_RDONLY);
 	if (fd1 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filefrom);
-		exit(98);
-	}
+		return (1);
 	fd2 = open(fileto, O_CREAT | O_EXCL | O_WRONLY, 0664);
 	if (fd2 < 0)
 		fd2 = open(fileto, O_TRUNC | O_WRONLY);
 	if (fd2 == -1)
-	{
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", fileto), exit(99);
-		exit(99);
-	}
+		return (2);
 	while (bytes)
 	{
 		bytes = read(fd1, buf, 1024);
 		if (bytes == -1)
-		{
-			dprintf(STDERR_FILENO, "Error: Can't read from file %s\n", filefrom);
-			exit(98);
-		}
+			return (1);
 		bytes2 = write(fd2, buf, bytes);
 		if (bytes2 == -1 || bytes != bytes2)
-			dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", fileto), exit(99);
+			return (2);
 	}
 	if (close(fd1) == -1)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1), exit(100);
