@@ -61,10 +61,10 @@ size_t file_read(char *filefrom, char *fileto)
 	}
 	closecheck = close(fd1);
 	if (closecheck == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd1), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1), exit(100);
 	closecheck2 = close(fd2);
 	if (closecheck2 == -1)
-		dprintf(STDERR_FILENO, "Error: Can't close fd %i\n", fd2), exit(100);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2), exit(100);
 
 	return (0);
 }
