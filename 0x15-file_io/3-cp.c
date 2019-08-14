@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
  * @fileto: file we are copying to.
  * Return: size t.
  */
-void file_read(char *filefrom, char *fileto)
+int file_read(char *filefrom, char *fileto)
 {
 	ssize_t bytes, bytes2;
 	int fd1, fd2;
@@ -63,4 +63,6 @@ void file_read(char *filefrom, char *fileto)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd1), exit(100);
 	if (close(fd2) == -1)
 		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd2), exit(100);
+
+	return (0);
 }
