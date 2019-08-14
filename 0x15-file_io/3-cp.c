@@ -35,7 +35,7 @@ size_t file_read(char *filefrom, char *fileto)
 	fd = open(filefrom, O_RDONLY);
 	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 	buf = malloc(1024);
@@ -83,14 +83,14 @@ size_t file_create(char *fileto, char *text_content)
 	fd = open(fileto, O_RDWR | O_TRUNC | O_CREAT, 0664);
 	if (fd == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d", fd);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 	check = write(fd, text_content, 1024);
 	if (check < 1)
 	{
 		close(fd);
-		dprintf(STDERR_FILENO, "Error: Can't write to %s", fileto);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", fileto);
 		exit(99);
 	}
 
