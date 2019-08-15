@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
 		exit(98);
 	}
 	else if (check == 2)
-		dprintf(STDERR_FILENO, "Error: Can't write to file %s\n", argv[2]), exit(99);
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", argv[2]), exit(99);
 
 	return (0);
 }
