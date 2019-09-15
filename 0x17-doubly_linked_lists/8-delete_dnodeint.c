@@ -3,7 +3,7 @@
  * delete_dnodeint_at_index - deletes node at given index.
  * @head: beginning of list.
  * @index: index of node to be deleted.
- * Return: 1 on success, 0 on failure.
+ * Return: 1 on success, -1 on failure.
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
@@ -29,5 +29,5 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		search = search->next;
 		i++;
 	}
-	return (0);
+	return (-1);
 }
