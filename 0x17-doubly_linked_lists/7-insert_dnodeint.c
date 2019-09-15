@@ -26,13 +26,14 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	}
 	while (search)
 	{
-		if (i == idx)
+		if (i == idx - 1)
 		{
 			new->n = n;
-			new->next = search;
-			new->prev = search->prev;
-			search->prev->next = new;
-			search->prev = new;
+			new->next = search->next;
+			new->prev = search;
+			search->next = new;
+			if (new->next)
+				new->next->prev = new;
 			return (new);
 		}
 		search = search->next;
