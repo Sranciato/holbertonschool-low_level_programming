@@ -12,7 +12,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
 	hash_node_t *new_node;
 
-	if (!ht || strcmp(key, "") == 0)
+	if (!value || !ht || !key || strcmp(key, "") == 0)
 		return (0);
 
 	new_node = malloc(sizeof(hash_node_t));
@@ -37,6 +37,7 @@ void handle_node(hash_table_t *ht, hash_node_t *new_node)
 	unsigned long int i;
 
 	i = key_index((const unsigned char *)new_node->key, ht->size);
+	tmp = ht->array[i];
 	if (ht->array[i])
 	{
 		tmp = ht->array[i];
