@@ -1,6 +1,6 @@
 #include "hash_tables.h"
 #include <string.h>
-int handle_node(hash_table_t *ht, hash_node_t *new_node);
+void handle_node(hash_table_t *ht, hash_node_t *new_node);
 /**
  * hash_table_set - add an element to the hash table
  * @ht: hash table
@@ -13,6 +13,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	hash_node_t *new_node;
 
 	if (!ht || !key || !value)
+		return (0);
+	if (*key == '\0')
 		return (0);
 
 	new_node = malloc(sizeof(hash_node_t));
@@ -30,9 +32,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
  * handle_node - adds node to hash table
  * @ht: hash table
  * @new_node: newly allocated node
- * Return: 1 on Success
  */
-int handle_node(hash_table_t *ht, hash_node_t *new_node)
+void handle_node(hash_table_t *ht, hash_node_t *new_node)
 {
 	hash_node_t *tmp;
 	unsigned long int i;
@@ -66,5 +67,4 @@ int handle_node(hash_table_t *ht, hash_node_t *new_node)
 		new_node->next = NULL;
 		ht->array[i] = new_node;
 	}
-	return (1);
 }
