@@ -7,7 +7,6 @@
 hash_table_t *hash_table_create(unsigned long int size)
 {
 	hash_table_t *new;
-	unsigned int i;
 
 	if (size == 0)
 		return (NULL);
@@ -25,8 +24,7 @@ hash_table_t *hash_table_create(unsigned long int size)
 
 	new->size = size;
 
-	for (i = 0; i < size; i++)
-		new->array[i] = NULL;
+	memset(new->array, 0, size * sizeof(hash_node_t));
 
 	return (new);
 }
