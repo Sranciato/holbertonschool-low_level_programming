@@ -48,7 +48,7 @@ void cocktail_sort_list(listint_t **list)
 	int check = 1;
 	listint_t *current = (*list);
 
-	if (!(*list) || !list)
+	if (!list || !(*list))
 		return;
 
 	while (check)
