@@ -7,17 +7,23 @@ def island_perimeter(grid):
     count = lis = val = check = 0
 
     for lis in range(len(grid)):
-        for val in range(len(grid[lis])):
+        for val in range(len(grid[0])):
             if grid[lis][val] == 1:
-                try:
-                    if grid[lis - 1][val] == 0:
-                        count += 1
-                    if grid[lis][val - 1] == 0:
-                        count += 1
-                    if grid[lis][val + 1] == 0:
-                        count += 1
-                    if grid[lis + 1][val] == 0:
-                        count += 1
-                except:
-                    pass
+                if lis - 1 == -1:
+                    count += 1
+                elif grid[lis - 1][val] == 0:
+                    count += 1
+                if val - 1 == -1:
+                    count += 1
+                elif grid[lis][val - 1] == 0:
+                    count += 1
+                if val + 1 == len(grid[0]):
+                    count += 1
+                elif grid[lis][val + 1] == 0:
+                    count += 1
+                if lis + 1 == len(grid):
+                    count += 1
+                elif grid[lis + 1][val] == 0:
+                    count += 1
+
     return count
