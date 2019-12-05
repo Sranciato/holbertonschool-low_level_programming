@@ -18,25 +18,17 @@ binary_tree_t *binary_tree_insert_right(binary_tree_t *parent, int value)
 	new->left = NULL;
 	new->right = NULL;
 	search = parent;
-	while (search)
+	if (!search->right)
 	{
-		if (!search->right)
-		{
-			new->parent = search;
-			search->right = new;
-			new->n = value;
-			return (new);
-		}
-		if (search->right->n > value)
-		{
-			new->parent = search;
-			new->right = search->right;
-			search->right->parent = new;
-			search->right = new;
-			new->n = value;
-			return (new);
-		}
-		search = search->right;
+		new->parent = search;
+		search->right = new;
+		new->n = value;
+		return (new);
 	}
+	new->parent = search;
+	new->right = search->right;
+	search->right->parent = new;
+	search->right = new;
+	new->n = value;
 	return (new);
 }
