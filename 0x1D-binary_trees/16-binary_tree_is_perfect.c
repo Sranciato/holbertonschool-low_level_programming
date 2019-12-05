@@ -6,15 +6,14 @@
  */
 size_t binary_tree_depth(const binary_tree_t *tree)
 {
-	size_t parent = 0;
+	size_t d = 0;
 
-	if (tree == NULL)
-		return (0);
-
-	parent = binary_tree_depth(tree->parent);
-	if (!tree->parent)
-		return (parent);
-	return (parent + 1);
+	while (tree != NULL)
+	{
+		d++;
+		tree = tree->left;
+	}
+	return (d);
 }
 /**
  * is_perfect - recursive function to test if tree is perfect
@@ -46,5 +45,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 	if (!tree)
 		return (0);
 
-	return (is_perfect(tree, depth, 0));
+	if (is_perfect(tree, depth, 0))
+		return (1);
+	return (0);
 }
